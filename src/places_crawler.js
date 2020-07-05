@@ -94,7 +94,7 @@ const extractPlaceDetail = async (options) => {
     if (includeHistogram) {
         // Include live popular times value
         const popularTimesLiveRawValue = await page.evaluate(() => {
-            return $('.section-popular-times-value.section-popular-times-live-value-lower.section-popular-times-current-value')
+            return $('.section-popular-times-current-value')
                 .parent().attr('aria-label');
         });
         const popularTimesLiveRawText = await page.evaluate(() => $('.section-popular-times-live-description').text().trim());
