@@ -78,7 +78,7 @@ Apify.main(async () => {
              */
             if (search.includes('place_id:')) {
                 log.info(`Place ID found in search query. We will extract data from ${search}.`);
-                const cleanSearch = search.replace(/\s+/g, '')
+                const cleanSearch = search.slice(0, search.indexOf("place_id")).trim().replace(/\s+/g, "+")
                 const placeId = cleanSearch.match(/place_id\:(.*)/)[1];
                 startRequests.push({
                     url: `https://www.google.com/maps/search/?api=1&query=${cleanSearch}&query_place_id=${placeId}`,
